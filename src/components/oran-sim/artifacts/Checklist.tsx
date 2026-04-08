@@ -12,15 +12,15 @@ const items = [
 
 const Checklist = ({ completedSteps }: { completedSteps: number[] }) => (
   <div className="space-y-2">
-    <p className="text-sm text-muted-foreground mb-4">待办清单</p>
+    <p className="text-sm text-muted-foreground/60 mb-4">待办清单</p>
     {items.map((item, i) => {
       const done = completedSteps.includes(i + 1);
       return (
         <div key={i} className="flex items-center gap-3 py-2.5">
-          <span className="font-pixel text-xs text-foreground/60 mt-0.5 flex-shrink-0">
+          <span className="font-pixel text-xs text-muted-foreground/40 mt-0.5 flex-shrink-0">
             [{done ? '✓' : 'x'}]
           </span>
-          <span className={`text-sm ${done ? 'text-muted-foreground line-through' : 'text-foreground'}`}>
+          <span className={`text-sm ${done ? 'text-muted-foreground/50 line-through' : 'text-foreground/70'}`}>
             {item}
           </span>
         </div>

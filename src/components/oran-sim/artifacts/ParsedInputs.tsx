@@ -1,11 +1,11 @@
 const Card = ({ title, fields }: { title: string; fields: { label: string; value: string }[] }) => (
-  <div className="border border-border rounded-xl p-5 bg-card">
-    <h3 className="text-sm font-semibold text-primary mb-4">{title}</h3>
+  <div className="rounded-xl border border-border/20 p-5 bg-card/90">
+    <h3 className="text-sm font-normal text-accent/80 mb-4">{title}</h3>
     <div className="space-y-2.5">
       {fields.map((f, i) => (
-        <div key={i} className="flex justify-between items-start py-1.5 border-b border-border/50 last:border-0">
-          <span className="text-xs text-muted-foreground flex-shrink-0">{f.label}</span>
-          <span className="text-xs text-foreground text-right ml-4">{f.value}</span>
+        <div key={i} className="flex justify-between items-start py-1.5 border-b border-border/20 last:border-0">
+          <span className="text-xs text-muted-foreground/60 flex-shrink-0">{f.label}</span>
+          <span className="text-xs text-foreground/70 text-right ml-4">{f.value}</span>
         </div>
       ))}
     </div>

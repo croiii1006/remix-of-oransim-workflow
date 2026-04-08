@@ -6,8 +6,6 @@ import WorkflowStream from "./WorkflowStream";
 import RightPanel from "./RightPanel";
 import { ArrowLeft, X } from "lucide-react";
 
-const stepIcons = ['⚙️', '📄', '🎯', '🕸️', '🏗️', '👥', '⚡', '▶️', '📊'];
-
 const OranSimPage = () => {
   const [mode, setMode] = useState<'setup' | 'workflow'>('setup');
   const [steps, setSteps] = useState<WorkflowStep[]>(WORKFLOW_STEPS.map(s => ({ ...s })));
@@ -82,18 +80,17 @@ const OranSimPage = () => {
   return (
     <div className="flex h-screen bg-background text-foreground overflow-hidden">
       {/* Left Panel */}
-      <div className="w-[50%] border-r border-border flex flex-col h-full">
+      <div className="w-1/2 min-h-0 border-r border-border/20 flex flex-col h-full">
         {mode === 'setup' ? (
           <div className="flex-1 overflow-y-auto scrollbar-thin">
             <SetupForm onSubmit={handleSubmit} />
           </div>
         ) : (
           <>
-            {/* Back button */}
-            <div className="flex items-center gap-2 px-5 py-3 border-b border-border flex-shrink-0">
-              <button onClick={handleBack} className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
-                <ArrowLeft className="w-4 h-4" />
-                <span>返回</span>
+            <div className="flex items-center gap-2 px-5 py-3 border-b border-border/20 flex-shrink-0">
+              <button onClick={handleBack} className="flex items-center gap-1.5 text-sm text-muted-foreground/60 hover:text-foreground/80 transition-colors">
+                <ArrowLeft className="w-3.5 h-3.5" />
+                <span className="text-xs">返回</span>
               </button>
             </div>
             <WorkflowStream
@@ -109,11 +106,11 @@ const OranSimPage = () => {
       </div>
 
       {/* Right Panel */}
-      <div className="w-[50%] flex flex-col h-full">
+      <div className="w-1/2 min-h-0 overflow-hidden flex flex-col h-full">
         {mode === 'setup' ? (
           <>
-            <div className="px-5 py-3 border-b border-border">
-              <span className="text-sm font-medium text-muted-foreground">模拟引导</span>
+            <div className="px-5 py-3 border-b border-border/20">
+              <span className="text-xs font-light tracking-[0.1em] text-muted-foreground/60">模拟引导</span>
             </div>
             <div className="flex-1 overflow-y-auto scrollbar-thin p-5">
               <SetupHelper />
@@ -121,38 +118,36 @@ const OranSimPage = () => {
           </>
         ) : (
           <>
-            {/* Right Panel Header */}
-            <div className="flex items-center justify-between px-5 py-3 border-b border-border flex-shrink-0">
-              <span className="text-base font-semibold text-foreground">
+            <div className="flex items-center justify-between px-5 py-3 border-b border-border/20 flex-shrink-0">
+              <span className="text-sm font-normal text-foreground/80">
                 {selectedStep === 0 ? '编写待办清单' : currentStepData?.title || ''}
               </span>
-              <button className="p-1 hover:bg-secondary rounded-md transition-colors">
-                <X className="w-4 h-4 text-muted-foreground" />
+              <button className="p-1 hover:bg-muted/20 rounded-lg transition-colors">
+                <X className="w-3.5 h-3.5 text-muted-foreground/50" />
               </button>
             </div>
 
-            {/* Right Panel Content */}
             <div className="flex-1 overflow-y-auto scrollbar-thin p-5">
               <RightPanel step={selectedStep} completedSteps={steps.filter(s => s.status === 'done').map(s => s.id)} />
             </div>
 
             {/* Bottom Step Tabs */}
-            <div className="flex border-t border-border flex-shrink-0">
+            <div className="flex border-t border-border/20 flex-shrink-0">
               {steps.map((step) => (
                 <button
                   key={step.id}
                   onClick={() => setSelectedStep(step.id)}
-                  className={`flex-1 py-2.5 text-center border-r border-border last:border-r-0 transition-colors ${
+                  className={`flex-1 py-2.5 text-center border-r border-border/20 last:border-r-0 transition-colors ${
                     step.id === selectedStep
                       ? 'bg-card'
-                      : 'bg-secondary/40 hover:bg-secondary/70'
+                      : 'bg-muted/20 hover:bg-muted/40'
                   }`}
                 >
-                  <p className={`font-mono text-sm ${step.id === selectedStep ? 'font-bold text-foreground' : 'text-muted-foreground'}`}>
+                  <p className={`font-mono text-sm ${step.id === selectedStep ? 'text-foreground/80' : 'text-muted-foreground/60'}`}>
                     {String(step.id).padStart(2, '0')}
                   </p>
                   {step.status === 'done' && (
-                    <p className="font-mono text-[9px] text-primary tracking-widest mt-0.5">DONE</p>
+                    <p className="font-pixel text-[8px] text-accent/80 tracking-widest mt-0.5">DONE</p>
                   )}
                 </button>
               ))}
