@@ -13,15 +13,15 @@ const fields = [
 
 const SimScope = () => (
   <div className="space-y-4">
-    <div className="border border-border rounded-xl p-5 bg-card">
-      <h3 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
-        <Target className="w-4 h-4 text-primary" /> 模拟范围摘要
+    <div className="rounded-xl border border-border/20 p-5 bg-card/90">
+      <h3 className="text-sm font-normal text-foreground/80 mb-4 flex items-center gap-2">
+        <Target className="w-3.5 h-3.5 text-accent/80" /> 模拟范围摘要
       </h3>
       <div className="space-y-3">
         {fields.map((f, i) => (
-          <div key={i} className="bg-secondary rounded-lg px-4 py-3">
-            <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1">{f.label}</p>
-            <p className="text-sm text-foreground leading-relaxed">{f.value}</p>
+          <div key={i} className="rounded-xl bg-muted/20 px-4 py-3">
+            <p className="text-[10px] text-muted-foreground/60 uppercase tracking-wider mb-1">{f.label}</p>
+            <p className="text-sm text-foreground/70 leading-relaxed">{f.value}</p>
           </div>
         ))}
       </div>

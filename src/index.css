@@ -1,53 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 8%;
+    --background: 0 0% 99%;
+    --foreground: 0 0% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 8%;
+    --card-foreground: 0 0% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 8%;
+    --popover-foreground: 0 0% 12%;
 
-    --primary: 152 60% 48%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 0 0% 12%;
+    --primary-foreground: 0 0% 99%;
 
-    --secondary: 0 0% 96%;
+    --secondary: 0 0% 96.5%;
     --secondary-foreground: 0 0% 35%;
 
     --muted: 0 0% 96%;
     --muted-foreground: 0 0% 50%;
 
-    --accent: 152 40% 95%;
-    --accent-foreground: 152 60% 35%;
+    --accent: 28 85% 58%;
+    --accent-foreground: 28 90% 30%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 91%;
-    --input: 0 0% 91%;
-    --ring: 152 60% 48%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 28 85% 58%;
 
     --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 0 0% 30%;
-    --sidebar-primary: 152 60% 48%;
+    --sidebar-primary: 28 85% 58%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 96%;
     --sidebar-accent-foreground: 0 0% 30%;
     --sidebar-border: 0 0% 91%;
-    --sidebar-ring: 152 60% 48%;
+    --sidebar-ring: 28 85% 58%;
 
-    --chart-1: 152 60% 48%;
-    --chart-2: 200 60% 50%;
-    --chart-3: 25 80% 55%;
-    --chart-4: 280 50% 55%;
-    --chart-5: 0 60% 50%;
+    --chart-1: 28 85% 58%;
+    --chart-2: 200 50% 55%;
+    --chart-3: 152 45% 50%;
+    --chart-4: 280 40% 55%;
+    --chart-5: 0 55% 55%;
   }
 }
 
@@ -57,14 +59,14 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
   }
 }
 
 @layer utilities {
   .scrollbar-thin {
     scrollbar-width: thin;
-    scrollbar-color: hsl(0 0% 85%) transparent;
+    scrollbar-color: hsl(0 0% 88%) transparent;
   }
   .scrollbar-thin::-webkit-scrollbar {
     width: 4px;
@@ -73,7 +75,11 @@
     background: transparent;
   }
   .scrollbar-thin::-webkit-scrollbar-thumb {
-    background: hsl(0 0% 85%);
+    background: hsl(0 0% 88%);
     border-radius: 2px;
+  }
+
+  .font-pixel {
+    font-family: 'Silkscreen', monospace;
   }
 }

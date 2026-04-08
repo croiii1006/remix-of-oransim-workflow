@@ -18,26 +18,26 @@ const files = [
 
 const SetupSummary = () => (
   <div className="space-y-4">
-    <div className="border border-border rounded-xl p-5 bg-card">
-      <h3 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
-        <CheckCircle2 className="w-4 h-4 text-primary" /> Setup 摘要
+    <div className="rounded-xl border border-border/20 p-5 bg-card/90">
+      <h3 className="text-sm font-normal text-foreground/80 mb-4 flex items-center gap-2">
+        <CheckCircle2 className="w-3.5 h-3.5 text-accent/80" /> Setup 摘要
       </h3>
       <div className="grid grid-cols-2 gap-3">
         {fields.map((f, i) => (
-          <div key={i} className="bg-secondary rounded-lg px-3 py-2.5">
-            <p className="text-[10px] text-muted-foreground uppercase tracking-wider">{f.label}</p>
-            <p className="text-sm text-foreground mt-1">{f.value}</p>
+          <div key={i} className="rounded-xl bg-muted/20 px-3 py-2.5">
+            <p className="text-[10px] text-muted-foreground/60 uppercase tracking-wider">{f.label}</p>
+            <p className="text-sm text-foreground/80 mt-1">{f.value}</p>
           </div>
         ))}
       </div>
     </div>
-    <div className="border border-border rounded-xl p-5 bg-card">
-      <h3 className="text-sm font-semibold text-foreground mb-3">上传文件</h3>
+    <div className="rounded-xl border border-border/20 p-5 bg-card/90">
+      <h3 className="text-sm font-normal text-foreground/80 mb-3">上传文件</h3>
       <div className="space-y-2">
         {files.map((f, i) => (
-          <div key={i} className="flex items-center gap-2 bg-secondary rounded-lg px-3 py-2.5">
-            <FileText className="w-4 h-4 text-primary" />
-            <span className="text-sm text-foreground">{f}</span>
+          <div key={i} className="flex items-center gap-2 rounded-xl bg-muted/20 px-3 py-2.5">
+            <FileText className="w-3.5 h-3.5 text-accent/80" />
+            <span className="text-sm text-foreground/70">{f}</span>
           </div>
         ))}
       </div>

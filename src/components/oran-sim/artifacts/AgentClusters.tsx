@@ -16,21 +16,21 @@ const AgentClusters = () => (
         { label: '模拟轮次', value: '60' },
         { label: '种子用户', value: '800' },
       ].map((s, i) => (
-        <div key={i} className="border border-border rounded-xl p-4 text-center bg-card">
-          <p className="text-lg font-bold text-primary">{s.value}</p>
-          <p className="text-[10px] text-muted-foreground mt-1">{s.label}</p>
+        <div key={i} className="rounded-xl border border-border/20 p-4 text-center bg-card/90">
+          <p className="text-lg font-light text-accent/80">{s.value}</p>
+          <p className="text-[10px] text-muted-foreground/60 mt-1">{s.label}</p>
         </div>
       ))}
     </div>
 
     {clusters.map((c, i) => (
-      <div key={i} className="border border-border rounded-xl p-4 bg-card">
+      <div key={i} className="rounded-xl border border-border/20 p-4 bg-card/90">
         <div className="flex items-center justify-between mb-3">
-          <h4 className="text-sm font-medium text-foreground flex items-center gap-2">
-            <Users className="w-4 h-4 text-primary" />
+          <h4 className="text-sm font-normal text-foreground/80 flex items-center gap-2">
+            <Users className="w-3.5 h-3.5 text-accent/80" />
             {c.name}
           </h4>
-          <span className="text-xs text-primary font-mono">{c.weight}</span>
+          <span className="text-xs text-accent/80 font-mono">{c.weight}</span>
         </div>
         <div className="grid grid-cols-2 gap-2 text-xs">
           {[
@@ -39,9 +39,9 @@ const AgentClusters = () => (
             ['评论概率', c.comment], ['忽略概率', c.ignore],
             ['影响力分', c.influence], ['平台亲和', c.platform],
           ].map(([label, value], j) => (
-            <div key={j} className="bg-secondary rounded-lg px-2.5 py-1.5">
-              <span className="text-muted-foreground">{label}</span>
-              <p className="text-foreground mt-0.5">{value}</p>
+            <div key={j} className="rounded-xl bg-muted/20 px-2.5 py-1.5">
+              <span className="text-muted-foreground/60">{label}</span>
+              <p className="text-foreground/70 mt-0.5">{value}</p>
             </div>
           ))}
         </div>
