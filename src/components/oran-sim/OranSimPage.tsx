@@ -1,4 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from "react";
+import { cn } from "@/lib/utils";
 import { StreamMessage, WORKFLOW_STEPS, WorkflowStep, generateWorkflowMessages, generateTimestamp } from "./types";
 import SetupForm from "./SetupForm";
 import SetupHelper from "./SetupHelper";
@@ -143,12 +144,14 @@ const OranSimPage = () => {
                       : 'bg-muted/20 hover:bg-muted/40'
                   }`}
                 >
-                  <p className={`font-mono text-sm ${step.id === selectedStep ? 'text-foreground/80' : 'text-muted-foreground/60'}`}>
-                    {String(step.id).padStart(2, '0')}
-                  </p>
-                  {step.status === 'done' && (
-                    <p className="font-pixel text-[8px] text-emerald-500 tracking-widest mt-0.5">DONE</p>
-                  )}
+                  <span className="font-pixel leading-none text-lg">{String(step.id).padStart(2, '0')}</span>
+                  <span className={cn("font-pixel text-[10px] leading-none text-[#8a8a8a]",
+                    step.status === 'running' && 'text-amber-600',
+                    step.status === 'done' && 'text-emerald-600',
+                    step.status === 'pending' && 'text-muted-foreground/40'
+                  )}>
+                    {step.status === 'running' ? 'LOADING' : step.status === 'done' ? 'DONE' : 'WAITING'}
+                  </span>
                 </button>
               ))}
             </div>
