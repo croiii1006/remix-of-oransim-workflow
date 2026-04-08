@@ -50,7 +50,7 @@ const StepCard = ({
         <div className="shrink-0 flex flex-col items-end gap-1">
           <span className="font-pixel text-lg font-medium text-[#3d3d3d]">{String(step.id).padStart(2, '0')}</span>
           {step.status === 'done' && (
-            <span className="font-pixel text-[12px] tracking-widest text-accent">DONE</span>
+            <span className="font-pixel text-[12px] tracking-widest text-emerald-500">DONE</span>
           )}
           {step.status === 'running' && (
             <Loader2 className="w-3 h-3 text-accent/80 animate-spin" />

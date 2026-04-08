@@ -147,7 +147,7 @@ const OranSimPage = () => {
                     {String(step.id).padStart(2, '0')}
                   </p>
                   {step.status === 'done' && (
-                    <p className="font-pixel text-[8px] text-accent/80 tracking-widest mt-0.5">DONE</p>
+                    <p className="font-pixel text-[8px] text-emerald-500 tracking-widest mt-0.5">DONE</p>
                   )}
                 </button>
               ))}
