@@ -48,7 +48,7 @@ const StepCard = ({
           </p>
         </div>
         <div className="shrink-0 flex flex-col items-end gap-1">
-          <span className="font-pixel text-lg font-medium text-[#3d3d3d]">{String(step.id).padStart(2, '0')}</span>
+          <span className="text-lg font-medium text-[#3d3d3d]" style={{ fontFamily: "'Urbanist', sans-serif" }}>{String(step.id).padStart(2, '0')}</span>
           {step.status === 'done' && (
             <span className="font-pixel text-[12px] tracking-widest text-emerald-500">DONE</span>
           )}
