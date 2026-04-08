@@ -42,7 +42,7 @@ const StepCard = ({
         </p>
       </div>
       <div className="text-right flex-shrink-0">
-        <p className="font-pixel text-base text-primary">{String(step.id).padStart(2, '0')}</p>
+        <p className="font-pixel text-base text-[#3d3d3d]">{String(step.id).padStart(2, '0')}</p>
         {step.status === 'done' && (
           <p className="font-pixel text-[9px] text-accent/80 tracking-widest leading-tight">DONE</p>
         )}
