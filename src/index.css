@@ -82,7 +82,7 @@
   .font-pixel {
     font-family: 'Silkscreen', monospace;
   }
-}
+
 
   @keyframes pixel-blink {
     0%, 100% { opacity: 1; }
