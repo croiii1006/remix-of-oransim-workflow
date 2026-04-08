@@ -53,7 +53,18 @@ const StepCard = ({
             <span className="font-pixel text-[12px] tracking-widest text-emerald-500">DONE</span>
           )}
           {step.status === 'running' && (
-            <Loader2 className="w-3 h-3 text-accent/80 animate-spin" />
+            <span className="font-pixel text-[13px] tracking-wider inline-flex gap-[2px]">
+              {[0, 1, 2, 3].map((i) => (
+                <span
+                  key={i}
+                  className="inline-block w-[6px] h-[6px] bg-emerald-500"
+                  style={{
+                    animation: 'pixel-blink 1.2s step-end infinite',
+                    animationDelay: `${i * 0.3}s`,
+                  }}
+                />
+              ))}
+            </span>
           )}
         </div>
       </div>
