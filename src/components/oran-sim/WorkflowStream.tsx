@@ -160,6 +160,8 @@ const WorkflowStream = ({ steps, messages, currentStep, selectedStep, isComplete
             }
           }
 
+          const stepDone = msg.stepId ? steps.find(s => s.id === msg.stepId)?.status === 'done' : false;
+
           if (msg.type === 'confirmation' || msg.type === 'complete') {
             elements.push(<CheckmarkMessage key={msg.id} content={msg.content} />);
           } else if (msg.type === 'system') {
@@ -167,7 +169,11 @@ const WorkflowStream = ({ steps, messages, currentStep, selectedStep, isComplete
           } else if (msg.type === 'status') {
             elements.push(
               <div key={msg.id} className="flex items-center gap-2 px-3 py-0.5 animate-fade-in-up">
-                <Loader2 className="w-3 h-3 text-accent/60 animate-spin flex-shrink-0" />
+                {stepDone ? (
+                  <CheckSquare className="w-3 h-3 text-accent/50 flex-shrink-0" />
+                ) : (
+                  <Loader2 className="w-3 h-3 text-accent/60 animate-spin flex-shrink-0" />
+                )}
                 <span className="text-xs text-muted-foreground/60">{msg.content}</span>
               </div>
             );
