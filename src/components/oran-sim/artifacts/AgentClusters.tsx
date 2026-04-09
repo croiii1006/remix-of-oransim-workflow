@@ -121,14 +121,14 @@ const AgentClusters = () => (
             <span className="text-muted-foreground/60">分享概率</span>
             <div className="flex items-center gap-2">
               <span className="text-foreground/70 w-7">{c.share}</span>
-              <div className="flex-1"><MiniBar value={c.share} max={0.4} color="bg-accent/40" /></div>
+              <div className="flex-1"><MiniBar value={c.share} color="bg-accent/40" /></div>
             </div>
           </div>
           <div>
             <span className="text-muted-foreground/60">评论概率</span>
             <div className="flex items-center gap-2">
               <span className="text-foreground/70 w-7">{c.comment}</span>
-              <div className="flex-1"><MiniBar value={c.comment} max={0.4} color="bg-accent/40" /></div>
+              <div className="flex-1"><MiniBar value={c.comment} color="bg-accent/40" /></div>
             </div>
           </div>
           <div>
