@@ -83,3 +83,8 @@
     font-family: 'Silkscreen', monospace;
   }
 }
+
+@keyframes bar-fill {
+  from { transform: scaleX(0); transform-origin: left; }
+  to { transform: scaleX(1); transform-origin: left; }
+}

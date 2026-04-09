@@ -12,8 +12,14 @@ const intentColor: Record<string, string> = { '高': 'bg-accent/60', '中': 'bg-
 const activityColor: Record<string, string> = { '极高': 'bg-accent/70', '高': 'bg-accent/50', '中高': 'bg-accent/35', '中': 'bg-muted-foreground/30', '低': 'bg-muted-foreground/20' };
 
 const MiniBar = ({ value, max = 1, color = 'bg-accent/60' }: { value: number; max?: number; color?: string }) => (
-  <div className="w-full h-1.5 rounded-full bg-muted/30 mt-1.5">
-    <div className={`h-full rounded-full ${color} transition-all`} style={{ width: `${Math.min((value / max) * 100, 100)}%` }} />
+  <div className="w-full h-1.5 rounded-full bg-muted/30 mt-1.5 overflow-hidden">
+    <div
+      className={`h-full rounded-full ${color} transition-all duration-1000 ease-out`}
+      style={{
+        width: `${Math.min((value / max) * 100, 100)}%`,
+        animation: 'bar-fill 1s ease-out forwards',
+      }}
+    />
   </div>
 );
 
