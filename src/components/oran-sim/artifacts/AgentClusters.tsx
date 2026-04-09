@@ -113,28 +113,28 @@ const AgentClusters = () => (
           <div>
             <span className="text-muted-foreground/60">互动阈值</span>
             <div className="flex items-center gap-2">
-              <span className="text-foreground/70 w-7">{c.interaction}</span>
+              <span className="text-foreground/70 w-9 shrink-0 tabular-nums text-right">{c.interaction}</span>
               <div className="flex-1"><MiniBar value={c.interaction} color="bg-accent/50" /></div>
             </div>
           </div>
           <div>
             <span className="text-muted-foreground/60">分享概率</span>
             <div className="flex items-center gap-2">
-              <span className="text-foreground/70 w-7">{c.share}</span>
+              <span className="text-foreground/70 w-9 shrink-0 tabular-nums text-right">{c.share}</span>
               <div className="flex-1"><MiniBar value={c.share} color="bg-accent/40" /></div>
             </div>
           </div>
           <div>
             <span className="text-muted-foreground/60">评论概率</span>
             <div className="flex items-center gap-2">
-              <span className="text-foreground/70 w-7">{c.comment}</span>
+              <span className="text-foreground/70 w-9 shrink-0 tabular-nums text-right">{c.comment}</span>
               <div className="flex-1"><MiniBar value={c.comment} color="bg-accent/40" /></div>
             </div>
           </div>
           <div>
             <span className="text-muted-foreground/60">忽略概率</span>
             <div className="flex items-center gap-2">
-              <span className="text-foreground/70 w-7">{c.ignore}</span>
+              <span className="text-foreground/70 w-9 shrink-0 tabular-nums text-right">{c.ignore}</span>
               <div className="flex-1"><MiniBar value={c.ignore} color="bg-muted-foreground/30" /></div>
             </div>
           </div>
@@ -143,7 +143,7 @@ const AgentClusters = () => (
           <div>
             <span className="text-muted-foreground/60">影响力分</span>
             <div className="flex items-center gap-2 mt-1">
-              <span className="text-foreground/70 font-medium">{c.influence}</span>
+              <span className="text-foreground/70 font-medium w-9 shrink-0 tabular-nums text-right">{c.influence}</span>
               <div className="flex-1"><MiniBar value={c.influence} max={10} color="bg-accent/60" /></div>
             </div>
           </div>
