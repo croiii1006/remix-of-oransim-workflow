@@ -8,11 +8,11 @@ const clusters = [
   { name: '成分/专业判断型用户', weight: 15, intent: '高', activity: '低', interaction: 0.15, share: 0.08, comment: 0.35, ignore: 0.42, platform: '小红书 75% / 抖音 25%', influence: 7.8 },
 ];
 
-const intentColor: Record<string, string> = { '高': 'bg-accent/60', '中': 'bg-accent/30', '低': 'bg-muted-foreground/30' };
-const activityColor: Record<string, string> = { '极高': 'bg-accent/70', '高': 'bg-accent/50', '中高': 'bg-accent/35', '中': 'bg-muted-foreground/30', '低': 'bg-muted-foreground/20' };
+const intentColor: Record<string, string> = { '高': 'bg-accent', '中': 'bg-accent/50', '低': 'bg-muted-foreground/40' };
+const activityColor: Record<string, string> = { '极高': 'bg-accent', '高': 'bg-accent/70', '中高': 'bg-accent/50', '中': 'bg-muted-foreground/40', '低': 'bg-muted-foreground/25' };
 
-const MiniBar = ({ value, max = 1, color = 'bg-accent/60' }: { value: number; max?: number; color?: string }) => (
-  <div className="w-full h-1.5 rounded-full bg-muted/30 mt-1.5">
+const MiniBar = ({ value, max = 1, color = 'bg-accent' }: { value: number; max?: number; color?: string }) => (
+  <div className="w-full h-2 rounded-full bg-border/30">
     <div className={`h-full rounded-full ${color} transition-all`} style={{ width: `${Math.min((value / max) * 100, 100)}%` }} />
   </div>
 );
