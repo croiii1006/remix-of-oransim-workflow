@@ -8,11 +8,11 @@ const clusters = [
   { name: '成分/专业判断型用户', weight: 15, intent: '高', activity: '低', interaction: 0.15, share: 0.08, comment: 0.35, ignore: 0.42, platform: '小红书 75% / 抖音 25%', influence: 7.8 },
 ];
 
-const intentColor: Record<string, string> = { '高': 'bg-accent', '中': 'bg-accent/50', '低': 'bg-muted-foreground/40' };
-const activityColor: Record<string, string> = { '极高': 'bg-accent', '高': 'bg-accent/70', '中高': 'bg-accent/50', '中': 'bg-muted-foreground/40', '低': 'bg-muted-foreground/25' };
+const intentColor: Record<string, string> = { '高': 'bg-accent/60', '中': 'bg-accent/30', '低': 'bg-muted-foreground/30' };
+const activityColor: Record<string, string> = { '极高': 'bg-accent/70', '高': 'bg-accent/50', '中高': 'bg-accent/35', '中': 'bg-muted-foreground/30', '低': 'bg-muted-foreground/20' };
 
-const MiniBar = ({ value, max = 1, color = 'bg-accent' }: { value: number; max?: number; color?: string }) => (
-  <div className="w-full h-2 rounded-full bg-border/30">
+const MiniBar = ({ value, max = 1, color = 'bg-accent/60' }: { value: number; max?: number; color?: string }) => (
+  <div className="w-full h-1.5 rounded-full bg-muted/30 mt-1.5">
     <div className={`h-full rounded-full ${color} transition-all`} style={{ width: `${Math.min((value / max) * 100, 100)}%` }} />
   </div>
 );
@@ -98,35 +98,57 @@ const AgentClusters = () => (
           <span className="text-xs text-accent/80 font-mono">{c.weight}%</span>
         </div>
 
-        <div className="space-y-3 text-xs">
-          {/* Intent & Activity */}
-          <div className="grid grid-cols-2 gap-x-4">
-            <div>
-              <span className="text-muted-foreground/60">意向层级</span>
-              <LevelDot level={c.intent} colorMap={intentColor} />
+        <div className="grid grid-cols-2 gap-x-4 gap-y-3 text-xs">
+          {/* Intent & Activity with dots */}
+          <div>
+            <span className="text-muted-foreground/60">意向层级</span>
+            <LevelDot level={c.intent} colorMap={intentColor} />
+          </div>
+          <div>
+            <span className="text-muted-foreground/60">活跃度</span>
+            <LevelDot level={c.activity} colorMap={activityColor} />
+          </div>
+
+          {/* Probability bars */}
+          <div>
+            <span className="text-muted-foreground/60">互动阈值</span>
+            <div className="flex items-center gap-2">
+              <span className="text-foreground/70 w-7">{c.interaction}</span>
+              <div className="flex-1"><MiniBar value={c.interaction} color="bg-accent/50" /></div>
             </div>
-            <div>
-              <span className="text-muted-foreground/60">活跃度</span>
-              <LevelDot level={c.activity} colorMap={activityColor} />
+          </div>
+          <div>
+            <span className="text-muted-foreground/60">分享概率</span>
+            <div className="flex items-center gap-2">
+              <span className="text-foreground/70 w-7">{c.share}</span>
+              <div className="flex-1"><MiniBar value={c.share} max={0.4} color="bg-accent/40" /></div>
+            </div>
+          </div>
+          <div>
+            <span className="text-muted-foreground/60">评论概率</span>
+            <div className="flex items-center gap-2">
+              <span className="text-foreground/70 w-7">{c.comment}</span>
+              <div className="flex-1"><MiniBar value={c.comment} max={0.4} color="bg-accent/40" /></div>
+            </div>
+          </div>
+          <div>
+            <span className="text-muted-foreground/60">忽略概率</span>
+            <div className="flex items-center gap-2">
+              <span className="text-foreground/70 w-7">{c.ignore}</span>
+              <div className="flex-1"><MiniBar value={c.ignore} color="bg-muted-foreground/30" /></div>
             </div>
           </div>
 
-          {/* Bar metrics — uniform layout */}
-          {[
-            { label: '互动阈值', value: c.interaction, max: 0.5, color: 'bg-accent' },
-            { label: '分享概率', value: c.share, max: 0.5, color: 'bg-accent/70' },
-            { label: '评论概率', value: c.comment, max: 0.5, color: 'bg-accent/70' },
-            { label: '忽略概率', value: c.ignore, max: 1, color: 'bg-muted-foreground/40' },
-            { label: '影响力分', value: c.influence, max: 10, color: 'bg-accent' },
-          ].map((m, j) => (
-            <div key={j} className="flex items-center gap-3">
-              <span className="text-muted-foreground/60 w-16 shrink-0">{m.label}</span>
-              <span className="text-foreground/70 w-8 shrink-0 tabular-nums">{m.value}</span>
-              <div className="flex-1"><MiniBar value={m.value} max={m.max} color={m.color} /></div>
+          {/* Influence score */}
+          <div>
+            <span className="text-muted-foreground/60">影响力分</span>
+            <div className="flex items-center gap-2 mt-1">
+              <span className="text-foreground/70 font-medium">{c.influence}</span>
+              <div className="flex-1"><MiniBar value={c.influence} max={10} color="bg-accent/60" /></div>
             </div>
-          ))}
+          </div>
 
-          {/* Platform */}
+          {/* Platform affinity */}
           <div>
             <span className="text-muted-foreground/60">平台亲和</span>
             <PlatformBar platform={c.platform} />
